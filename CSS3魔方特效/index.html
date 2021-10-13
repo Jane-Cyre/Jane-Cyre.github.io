@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"><!--设置字符编码及格式-->
+	<title>Alice Cube</title>
+	<style type="text/css">/*CSS添加方法—内嵌样式*/
+		*{             /*设置页面中所有元素的内外边距都为0*/
+			margin: 0;
+			padding: 0;
+		}
+		.container{
+			width:1350px; 
+			height:800px;
+			background-color: #f66;
+			position: relative;
+		}
+		.box-container{   /*设置container容器样式*/
+			position: absolute;
+			top: 30px;
+			left: 520px;
+			width: 300px;
+			height: 300px;
+			/*border: 1px solid #000;*/
+			margin: 150px auto;
+			perspective: 10000px;/*经测试，发现浏览器透视效果均不明显！*/
+		}
+		.box{         /*设置box魔方盒子样式*/
+            width: 300px;
+            height: 300px;
+            /*控制子元素保持3D转换*/
+            transform-style: preserve-3d;/*在不添加pre-3d语句时默认2D转换，添加pre-3d语句后便是3d空间转换，此时便可实现.top的translateZ()值*/
+
+            /*测试代码*/
+            /*transform: rotateX(45deg) rotateY(45deg) rotateZ(45deg);*/ /*控制box魔方盒子先沿X轴顺时针旋转45度再沿Y轴顺时针旋转45度再沿Z轴顺时针旋转45度，方便观察盒子侧面立体结构*/
+            animation: box-rotate 6s linear infinite;/*父元素.box调用animation动画属性； 动画持续6s 匀速 时间无限制*/
+		}
+
+		@keyframes box-rotate{ /*@keyframes规则：定义动画*/
+            0%{
+            transform: rotateX(0deg) rotateY(0deg);/*0%时静止不动，roX(0) roY(0)*/
+            }
+            100%{
+            transform: rotateX(360deg) rotateY(360deg);/*100%时需要让box盒子动起来，先沿X轴旋转360度再沿Y轴旋转360度*/
+            }
+		}
+		.box-page{    /*设置box-page六个面的共同样式*/
+            width: 300px;
+            height: 300px;
+            /*位置初始化*/
+            position: absolute;
+            transform-style: preserve-3d;/*如果想让子元素div:nth-child执行3D空间转换，则必须在其父元素.box-page中设置3D空间转换transform-style: preserve-3d;语句*/
+		}
+		/*在屏幕的3D空间中，三维坐标系为：X轴沿屏幕向右延伸，Y轴沿屏幕向下延伸，Z轴沿屏幕且垂直于屏幕向外延伸*/
+		.top{         /*设置top上端面样式*/
+            /*background-color: red;*/
+            transform: translateZ(150px);/*transform属性的translateZ(zpx)值：将top面沿垂直于屏幕向外Z轴正方向水平平移150个像素*/
+		}
+		.bottom{      /*设置bottom下端面样式*/
+			/*background-color: green;*/
+			transform: translateZ(-150px);/*将bottom面沿垂直于屏幕向内Z轴负方向水平平移150个像素*/
+		}
+		.left{        /*设置left左端面样式*/
+			/*background-color: orange;*/
+			transform: translateX(-150px) rotateY(-90deg);/*先将left面沿X轴负方向水平平移150个像素再沿Y轴方向逆时针旋转90度*/ 
+		}
+		.right{       /*设置right右端面样式*/
+			/*background-color: pink;*/
+			transform: translateX(150px) rotateY(90deg);/*先将right面沿X轴正方向水平平移150个像素再沿Y轴方向顺时针旋转90度*/
+		}             
+		.before{      /*设置before前端面样式*/
+			/*background-color: blue;*/
+			transform: translateY(150px) rotateX(-90deg);/*先将before面(靠前的面)沿Y轴正方向水平平移150个像素再沿X轴方向逆时针旋转90度*/
+		}
+		.after{       /*设置after后端面样式*/
+			/*background-color: yellow;*/
+			transform: translateY(-150px) rotateX(90deg);/*先将after面(靠后的面)沿Y轴负方向水平平移150个像素再沿X轴方向顺时针旋转90度*/
+		}
+
+		.box-page div:nth-child(1){  /*.XXX tag:nth-child()选取标签属性，这里为依次选取9个div-小块的面*/
+			animation: child 2.1s ease-in;     /*父元素.box-page调用animation动画属性；功能为animation: keyframes的值 动画持续时间 速率*/
+		}
+		.box-page div:nth-child(2){
+			animation: child 2.1s ease-in 0.8s;/*父元素.box-page调用animation动画属性；功能为animation: keyframes的值 动画持续时间 速率 当前child-小块面飞出的起始时间与下一个child-小块面飞出的起始时间的时间间隔*/
+		}
+		.box-page div:nth-child(3){
+			animation: child 2.1s ease-in 1.6s;/*以此类推*/
+		}
+		.box-page div:nth-child(4){
+			animation: child 2.1s ease-in 2.4s;/*以此类推*/
+		}
+		.box-page div:nth-child(5){
+			animation: child 2.1s ease-in 3.2s;/*以此类推*/
+		}
+		.box-page div:nth-child(6){
+			animation: child 2.1s ease-in 4.0s;/*以此类推*/
+		}
+		.box-page div:nth-child(7){
+			animation: child 2.1s ease-in 4.8s;/*以此类推*/
+		}
+		.box-page div:nth-child(8){
+			animation: child 2.1s ease-in 5.6s;/*以此类推*/
+		}
+		.box-page div:nth-child(9){
+			animation: child 2.1s ease-in 6.4s;/*以此类推*/
+		}
+
+		@keyframes child{     /*每一个box-page中的9个小块的每个面，取值为child*/
+			0%{           /*注意：对于三维坐标系XYZ,每一个“小块的面”的X轴与Y轴垂直相交于小块的平面内，Z轴均垂直于每一个小块平面向外*/
+				transform: translateZ(0px) scale(1) rotateZ(0deg);/*0%:首先沿垂直于屏幕向外Z轴正方向水平平移0px(静止不平移),scale缩放比例为1(原比例),以面中心点为基准，每一个“小块的面”绕Z轴旋转0deg(静止不旋转)*/
+			}
+            50%{
+            	transform: translateZ(500px) scale(0) rotateZ(1080deg);/*0%-50%期间沿Z轴向屏幕外水平平移500px,同时当“小块的面”飞至500px处scale缩放比例为0，同时在向外飞出过程中“小块的面”绕Z轴快速旋转三圈*/
+			}
+			100%{
+				transform: translateZ(0px) scale(1) rotateZ(0deg);/*50%-100%期间“小块的面”从500px处沿z轴返回至原位置0px处,同时scale缩放比例为1(还原),此时每一个“小块的面”也不绕Z轴旋转(归位)*/
+			}
+		}
+	</style>    
+</head>
+<body>
+	<!--容器-->
+<div class="container">
+	<audio src="宮本笑里 - HA・RE.mp3" controls="controls"></audio>
+<div class="box-container">
+	<div class="box"><!--定义魔方的6个面，且class属性取值为两个名称，名称box-page对应六个面相同样式：如6个面大小相同，名称top~after对应六个面不同样式：如6个面背景图片不同-->
+		<div class="box-page top"></div>
+		<div class="box-page bottom"></div>
+		<div class="box-page left"></div>
+		<div class="box-page right"></div>
+		<div class="box-page before"></div>
+		<div class="box-page after"></div>
+	</div>
+</div>
+</div>
+<script type="text/javascript">//可理解为：JavaScript添加方法—内嵌样式
+	var arr = document.querySelectorAll(".box-page");//利用DOM查找，查找到魔方盒box-page所对应的六个面，并将它们保存在数组arr中,并且查找到的魔方盒子的6个面在数组中以下标0-5按顺序保存
+	//遍历6个面中的每一个面
+    for(var n = 0; n<arr.length; n++){
+    	//外层循环遍历行
+		for(var r=0; r<3; r++){
+			//内层循环遍历列
+			for(var c=0; c<3; c++){
+				//创建元素
+				var divs = document.createElement("div");
+				//设置每个小块对应的样式
+				divs.style.cssText = "width: 100px;height: 100px;border: 1px solid #fff;position: absolute;box-sizing: border-box;background-image: url(img/a"+n+".JPG);background-size: 300px 300px;";//1.absolute绝对定位使a0-a5六张img中被切割的9个div全部叠加在一个div区域中，且该div区域默认在X轴正方向与Y轴正方向与原点的包围区域中 2.background-size: 300px 300px; + border属性 + box-sizing属性的border-box值(注:padding和border被包含在定义的width和height之内。对象的实际宽度就等于设置的width值，即使定义有border和padding也不会改变对象的实际宽度)这三个功能将每一张img都分成了3X3的带border的小的div区域(实际上就是魔方盒子的每一个小块的独立面)
+        //. 将元素添加到DOM树
+				arr[n].appendChild(divs);
+
+        // 改变每一个div的位置
+				divs.style.left = c*100+"px";
+				divs.style.top = r*100+"px";
+
+				// 改变背景图相应的位置(背景图像定位)
+				divs.style.backgroundPositionX = -c*100+"px";//背景图像定位如果想显示图像中的每个div区域内的小图，一定以负值来显示(可以理解成指向X轴或Y轴方向的距离箭头都是沿着负半轴所指，故以负值显示)
+				divs.style.backgroundPositionY = -r*100+"px";		
+			}
+		}
+	}
+</script>
+</body>
+</html>
