@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Coffee house</title>
+	<link rel="stylesheet" href="css/style.css" /><!--链接的CSS样式表文件-->
+</head>
+<body>
+	<div id="container"><!--定义一个主体容器区域container-->
+		<div id="header"><!--定义页眉区域header-->
+			<img src="images/banner.jpg" alt="#">
+        <div id="icon-list"> <!--div定义多张图片所组成的区域中的图片均默认按一行并排放置-->
+        	<img src="images/1.bmp" alt=""><!--bmp位图格式-->
+        	<img src="images/2.bmp" alt="">
+        	<img src="images/3.bmp" alt="">
+        	<img src="images/4.bmp" alt="">
+        </div>
+		</div>
+		<div id="nav"><!--定义导航栏nav-->
+			<a href="#">咖啡MENU&nbsp</a>| <!--#表示虚拟超链接，不跳转-->
+			<a href="#">咖啡COOK&nbsp</a>| <!--&nbsp为一个空格字符-->
+			<a href="#">咖啡STORY&nbsp</a>|
+			<a href="#">咖啡NEWS&nbsp</a>|
+			<a href="#">咖啡PARTY</a>
+		</div>
+		<div id="main"><!--定义一个包含aside和content的主体内容区域main-->
+			<div id="aside"><!--定义左边栏区域aside-->
+				<h2>咖啡MENU</h2>
+				<table border="1">
+					<tr> <!--row为单元格的一行-->
+						<th></th> <!--(th表头单元格)默认粗体-->
+						<th>拿铁Latte</th>
+						<th>卡布奇诺Cappuccino</th>
+						<th>摩卡Mocha</th>
+						<th>浓缩咖啡Espresso</th>
+					</tr>
+					<tr>
+						<th>大杯</th>
+						<td>35</td> <!--普通单元格-->
+						<td>35</td>
+						<td>35</td>
+						<td>30</td>
+					</tr>
+					<tr>
+						<th>中杯</th>
+						<td>30</td>
+						<td>30</td>
+						<td>30</td>
+						<td>25</td>
+					</tr>
+					<tr>
+						<th>小杯</th>
+						<td>25</td>
+						<td>25</td>
+						<td>25</td>
+						<td>20</td>
+					</tr>
+				</table>
+				<div id="imglist"><!--在左边栏区域aside中定义一个图片列表-->
+					<div class="same rotate-right"><img src="images/Mocha.jpg" alt=""></div><!--img可旋转-->
+					<div class="same rotate-left"><img src="images/Latte.jpg" alt=""></div>
+					<div class="same rotate-right"><img src="images/Espresso.jpg" alt=""></div>
+					<div class="same rotate-left"><img src="images/Cappuccino.jpg" alt=""></div>
+				</div>
+			</div>
+			<div id="content"><!--定义内容区域content-->
+				<div id="part1" class="subcon">
+					<img src="images/Latte.jpg" alt="">
+					<div class="subtext">
+						<h2>拿铁Caffè Latte</h2>
+						<p>   <!--<br />自动换一行，中间不空行-->
+							这是一种传统的经典饮料——浓缩咖啡调入热牛奶，其上覆盖一层轻盈的奶沫。<br />品尝此款咖啡时，您可以选择特别加入某种口味（如香草，焦糖或杏仁口味）的糖浆。
+						</p>
+					</div>
+				</div>
+				<div id="part2" class="subcon">
+					<img src="images/Cappuccino.jpg" alt="">
+					<div class="subtext">
+						<h2>卡布奇诺Cappuccino</h2>
+						<p>
+							这款咖啡沿袭传统技法，由我们技艺娴熟的咖啡吧员将手工制作的热奶与细腻奶泡轻柔地浇在浓缩咖啡之上制作而成。
+						</p>
+					</div>
+				</div>
+				<div id="part3" class="subcon">
+					<img src="images/Mocha.jpg" alt="">
+					<div class="subtext">
+						<h2>摩卡Caffè Mocha</h2>
+						<p>
+							这款咖啡由醇香的摩卡酱，浓缩咖啡和蒸奶相融相合，上面覆以搅打奶油。<br />寒冷的日子里，忧伤的时光中,任何人都无法抵抗她的诱惑。
+						</p>
+					</div>
+				</div>
+				<div id="part4" class="subcon">
+					<img src="images/Espresso.jpg" alt="">
+					<div class="subtext">
+						<h2>浓缩咖啡Espresso</h2>
+						<p>
+							这是咖啡的精粹，以最浓缩的方式显现。浓缩咖啡带点焦糖味道，浓厚馥郁。
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="footer"><p>森の時計咖啡馆</p></div><!--定义页脚区域footer-->
+	</div>
+	<div id="fix-box1"><!--定义一个在左侧的固定区域box1用于存放img-->
+		<img src="images/Cappuccino.jpg" alt="">
+		<div id="fix-box2"><p>&nbsp;&nbsp;一起享受咖啡带来的温暖吧❤</p></div><!--定义一个在固定区域box1中相对固定的区域box2用于存放p文本内容-->
+	</div>
+</body>
+</html>

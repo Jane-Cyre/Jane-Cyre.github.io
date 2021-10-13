@@ -1,0 +1,160 @@
+*{
+	padding: 0;
+	margin: 0;	
+}
+/*body{
+	font-size: 16px;
+	color: #673929;
+}*/
+#container{
+	margin: 0 auto;
+	width: 900px;
+}
+#header{
+	height: 220px;
+	background-color: #000;
+	margin-bottom: 5px;
+	position: relative; /*相对定位*/
+}
+#icon-list{
+	position: absolute; /*绝对定位*/
+	top: 170px;
+	right: 30px;
+	width: 130px;
+	height: 30px;
+	/*font-size: 0;*/ /*HTML代码中image标签添加的图片之间默认情况下会有空隙，font-size:0；可用于清除该空隙*/
+}
+#nav{
+	height: 30px;
+	line-height: 30px; /*将行高L-h与高h设置相同使文本字体垂直方向居中*/
+	background-color: #366;
+	font: 18px/30px 微软雅黑; /* 字号/行高 */
+	color:#fff; /* 文本颜色 */
+	letter-spacing: 2px;
+	text-align: center;
+	margin-bottom: 5px;
+}
+#nav a{
+	text-decoration: none; /*设置超链接无下划线*/
+}
+a:link{       /*链接未访问*/
+	color: #fff;
+}
+a:visited{    /*链接已访问*/
+	color: #fff;
+}
+a:hover{      /*鼠标悬浮链接将呈现黄色*/
+	color: yellow;
+}
+#main{
+	height: 850px;
+	background-color: #fff; /*白色*/
+	margin-bottom: 5px;
+}
+#aside{
+	float: left;
+	width: 300px;
+	height: 640px;
+	background-color: #903;
+	text-align: center;
+	font-size: 14px; /*字号大小*/
+	/*margin-bottom:?*/ /*因为aside区域高度小于右侧并排的main区域高度*/
+}
+h2{
+	margin-top: 12px;
+	margin-bottom: 5px;
+}
+table,td,th{
+	border: 1px solid #000; /*设置表格的边框为实线*/
+}
+#imglist{
+	margin-left: 100px;
+}
+.same{
+	width: 75px;
+	height: 85px;
+	padding: 10px; /*内边距padding不包括在width和height所组成的盒子区域中*/
+	background-color: #ffc;
+	border: 1px solid olive;
+	border-radius: 5px; /*设置该div区域的边框为圆角*/
+	box-shadow: 4px 4px 8px #666; /*水平偏移 垂直偏移 模糊距离 阴影颜色*/
+}
+.same:hover{
+	transform: scale(1.2); /*鼠标悬浮在图片上方将触发放大图片比例效果*/
+}
+#imglist img{
+	width: 75px;
+	height: 85px;
+}
+.rotate-right{ /*顺时针旋转 注：trf+Tab;2D平面转换*/
+	-webkit-transform: rotate(7deg);
+	-ms-transform: rotate(7deg);
+	-o-transform: rotate(7deg);
+	transform: rotate(7deg);
+}
+.rotate-left{ /*逆时针旋转*/
+	-webkit-transform: rotate(-7deg);
+	-ms-transform: rotate(-7deg);
+	-o-transform: rotate(-7deg);
+	transform: rotate(-7deg);
+}
+#content{        /*content部分的文本对齐和字号属性未体现？*/
+	float: right;
+	width: 595px;
+	height: 850px;
+	background-color:#fc9;
+	margin-bottom: 5px;
+}
+.subcon{ /*subcontent实际上是指将content分成从上到下的四块子内容区域subcon*/
+	width: 595px;
+	/*margin: 10px auto;*/
+	clear: both; /*若无clear:both，下方的img会向上浮动，导致X层图片浮动到X-1层，X+1层图片浮动到X层*/
+}
+.subcon img{
+	float: left;
+	margin: 5px;
+	padding: 5px;
+	border: 1px dashed #000; /*设置图片边框为虚线"dashed"*/
+}
+.subcon .subtext{
+	width: 60%; /*设置文本宽度为父级宽度的60%*/
+	margin: 5px;
+	float: right;
+}
+.subcon h2{
+	margin: 7px; /*设置h2级标题外边距*/
+}
+.subtext p{ /*subtext的p文本字体设置为..*/
+	font: 16px/2em 微软雅黑; /*此处设置2倍行高2em，若无“微软雅黑”，则行间距不会明显体现出来*/
+}
+#footer{
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+	background-color:#9c6;
+}
+#footer p{
+	font-size: 20px;
+	letter-spacing: 2px;
+	text-align: center;
+} 
+#fix-box1{
+	position: fixed; /*固定定位*/
+	top: 100px;
+	left: 10px;
+	width: 170px; 
+	height: 190px;
+	border:1px solid #933; 
+}
+#fix-box2{
+	position: absolute; /*绝对定位*/
+	top: 170px;
+	width: 99%; 
+	bottom: 0;
+}
+#fix-box1 p{
+    font-size: 4px;
+    color: #c66
+}
+/*CSS中的.XXX为HTML文件调用CSS中对应的XXX类的样式
+   HTML中的id=XXX标识在CSS中以#XXX被HTML文件调用该样式*/
